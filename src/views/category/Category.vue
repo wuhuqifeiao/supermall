@@ -1,5 +1,8 @@
 <template>
   <div id="category">
+    <nav-bar class="category-nav">
+      <template v-slot:center>购物街</template>
+    </nav-bar>
     <el-tabs :tab-position="tabPosition" @tab-click="itemClick">
       <el-tab-pane :label="item.title" v-for="(item,index) in categoryList" :key="index">
         <category-item :categoryGoods="categoryGoods" :goodsInfo="goodsInfo"></category-item>
@@ -15,10 +18,13 @@
     getSubcategory,
     getCategoryDetail
   } from '@/network/category.js'
+  import NavBar from '@/components/navbar/NavBar.vue';
   import categoryItem from '@/views/category/childComps/categoryItem.vue';
+
   export default {
     components: {
-      categoryItem
+      categoryItem,
+      NavBar
     },
     data() {
       return {
@@ -72,23 +78,30 @@
   }
 </script>
 <style>
+  .category-nav {
+    background-color: var(--color-tint);
+    color: white;
+  }
   #category .el-tabs__nav-prev {
     display: none;
     height: 0;
   }
 
-  #category span.el-tabs__nav-next {
+  #category .el-tabs__nav-next {
     display: none;
     height: 0 !important;
   }
-
-  #category .header {
+  #category .el-tabs{
     position: fixed;
-    top: 0;
+    top:44px;
+    left: 0;
+  }
+  #category .el-tabs__header {
+    height: 100vh;
   }
 
   #category .el-tabs__nav-wrap {
-    height: 95vh;
+    height: 90vh;
   }
 
   #category .el-tabs__nav-scroll {

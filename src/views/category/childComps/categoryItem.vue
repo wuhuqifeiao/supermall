@@ -31,7 +31,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding-bottom: 50px;
+    padding-bottom: 90px;
   }
 
   #categoryItem div {
